@@ -1,8 +1,10 @@
 # nReplaceWithValidation
 
-[![Build Status](https://travis-ci.org/nodes-frontend/nReplaceWithValidation.svg?branch=master)](https://travis-ci.org/nodes-frontend/nReplaceWithValidation)[![Coverage Status] (https://coveralls.io/repos/github/nodes-frontend/nReplaceWithValidation/badge.svg?branch=master)](https://coveralls.io/github/nodes-frontend/nReplaceWithValidation?branch=master)
+[![Build Status](https://travis-ci.org/nodes-frontend/nReplaceWithValidation.svg?branch=master)](https://travis-ci.org/nodes-frontend/nReplaceWithValidation) [![Coverage Status](https://coveralls.io/repos/github/nodes-frontend/nReplaceWithValidation/badge.svg?branch=master)](https://coveralls.io/github/nodes-frontend/nReplaceWithValidation?branch=master)
 
 Replaces element text with validation message, ex. labels, helper texts etc. using ng-messages [(build with nodes-component-starter)](https://github.com/nodes-frontend/nodes-component-starter)
+
+![Screencapture GIF](https://raw.githubusercontent.com/nodes-frontend/nReplaceWithValidation/master/demo.gif)
 
 # Getting started
 ```bash
