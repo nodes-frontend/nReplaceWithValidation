@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>nReplaceWidthValidation</title>
+        <link rel="stylesheet" href="dist/nReplaceWithValidation.css">
+    </head>
+    <body ng-app="demoApp">
+        <div ng-controller="demoController as demo">
+
+            <div class="row">
+
+                <div class="small-12 columns text-center">
+                    <h1>Demo - nReplaceWidthValidation</h1>
+                </div>
+
+            </div>
+
+            <form name="demo.form" ng-submit="demo.submit()" novalidate>
+
+                <div class="row">
+
+                    <div class="small-12 medium-6 columns">
+
+                        <label>
+                            <!-- With default messages -->
+                            <span n-replace-with-validation
+                                  text="Username"
+                                  name="username"></span>
+
+                            <input name="username" type="text" placeholder="Username" ng-model="demo.user.username" aria-describedby="usernameHelpText" required>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="small-12 medium-6 columns">
+
+                        <label>
+                            <span>Password</span>
+                            <!-- With custom messages -->
+                            <p class="help-text"
+                               id="passwordHelpText"
+                               n-replace-with-validation
+                               text="Your password must have at least 10 characters"
+                               messages="demo.messages"
+                               name="password"></p>
+                            <input name="password" type="password" placeholder="Password" ng-model="demo.user.password" aria-describedby="passwordHelpText" required minlength="10">
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="small-12 medium-6 columns">
+                        <button type="submit" class="success button">Save</button>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="small-12 medium-6 columns">
+                        <pre>demo.form.$error = {{demo.form.$error | json}}</pre>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <script src="node_modules/angular/angular.js"></script>
+
+        <!-- component.js will be used on dev, in production it will be rewrited to minfied version component.min.js -->
+        <script src="dist/component.js"></script>
+
+        <script>
+            (function() {
+
+                angular.module('demoApp', ['nReplaceWithValidation']);
+
+                angular
+                    .module('demoApp')
+                    .controller('demoController', function() {
+                        var vm = this;
+                        vm.messages = {
+                            required: 'This is a custom required message',
+                            minlength: 'This is a custom minLength message'
+                        };
+                        vm.submit = submit;
+
+                        function submit() {
+                            alert('SUBMIT IT!!!');
+                        }
+
+                    });
+
+            })();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<div>
+    <span ng-show="nReplaceWithValidation.input.$valid || nReplaceWithValidation.input.$pristine"
+          ng-class="{'is-invalid-input': nReplaceWithValidation.input.$invalid && !nReplaceWithValidation.input.$pristine}">
+        {{nReplaceWithValidation.text}}
+    </span>
+
+    <span role="alert"
+          class="ng-messages"
+          ng-messages="nReplaceWithValidation.input.$error"
+          ng-show="!nReplaceWithValidation.input.$pristine">
+
+        <span class="is-invalid-label" ng-message-exp="key" ng-repeat="(key, message) in nReplaceWithValidation.messages track by $index">
+            {{message}}
+        </span>
+
+    </span>
+
+</div>
