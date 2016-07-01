@@ -1,5 +1,7 @@
 # nReplaceWithValidation
 
+[![Build Status](https://travis-ci.org/nodes-frontend/nReplaceWithValidation.svg?branch=master)](https://travis-ci.org/nodes-frontend/nReplaceWithValidation)
+
 Replaces element text with validation message, ex. labels, helper texts etc. using ng-messages [(build with nodes-component-starter)](https://github.com/nodes-frontend/nodes-component-starter)
 
 # Getting started
