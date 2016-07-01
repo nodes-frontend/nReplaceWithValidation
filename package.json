@@ -1,6 +1,5 @@
 {
   "name": "n-replace-with-validation",
-  "version": "0.0.0-semantically-released",
   "description": "Replaces existing text with validation messages using angular-messages ex. labels and helper texts",
   "main": "index.js",
   "scripts": {
