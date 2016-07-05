@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>nReplaceWithValidation by nodes-frontend</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>nReplaceWithValidation</h1>
+          <h2>Angular 1.x component which replaces element text with validation message, ex. labels, helper texts etc. using ng-messages</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/nodes-frontend/nReplaceWithValidation/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/nodes-frontend/nReplaceWithValidation/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/nodes-frontend/nReplaceWithValidation" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="nreplacewithvalidation" class="anchor" href="#nreplacewithvalidation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>nReplaceWithValidation</h1>
+
+<p><a href="https://travis-ci.org/nodes-frontend/nReplaceWithValidation"><img src="https://travis-ci.org/nodes-frontend/nReplaceWithValidation.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/nodes-frontend/nReplaceWithValidation?branch=master"><img src="https://coveralls.io/repos/github/nodes-frontend/nReplaceWithValidation/badge.svg?branch=master" alt="Coverage Status"></a></p>
+
+<p>Replaces element text with validation message, ex. labels, helper texts etc. using ng-messages <a href="https://github.com/nodes-frontend/nodes-component-starter">(build with nodes-component-starter)</a></p>
+
+<p><img src="https://raw.githubusercontent.com/nodes-frontend/nReplaceWithValidation/master/demo.gif" alt="Screencapture GIF"></p>
+
+<h1>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting started</h1>
+
+<div class="highlight highlight-source-shell"><pre>npm install n-replace-with-validation --save</pre></div>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>The component comes with some default validation messages which is configured in the provider. These can be configured through the provider or overwritten my the messages attr at the directive.</p>
+
+<p>MORE DOCUMENTATION WILL FOLLOW ASAP!!!</p>
+
+<h1>
+<a id="development" class="anchor" href="#development" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development</h1>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>This will install all you need to get started. Besides the dependencies in package.json, it will automatically install <a href="http://jspm.io/">jspm</a> for you globally and install jspm dependencies too.  </p>
+
+<div class="highlight highlight-source-shell"><pre>npm install</pre></div>
+
+<h3>
+<a id="what-does-this-include" class="anchor" href="#what-does-this-include" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What does this include</h3>
+
+<ul>
+<li>Semantic-relase</li>
+<li>Travis CI</li>
+<li>Typescript</li>
+<li>Commitizen</li>
+<li>ng-annotate (adds and removes AngularJS dependency injection annotations)</li>
+<li>Inline Angular templates</li>
+<li><a href="https://github.com/Frikki/validate-commit-message">validate-commit-msg</a></li>
+<li>Karma / Jasmine testing environment</li>
+<li>Lite-server (live-reload)</li>
+<li>SCSS environment with autoprefixer</li>
+<li><a href="https://github.com/systemjs/builder#self-executing-sfx-bundles">SystemJS (SFX)</a></li>
+<li>Gulp</li>
+<li>Source maps</li>
+</ul>
+
+<h3>
+<a id="lite-server" class="anchor" href="#lite-server" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lite-server</h3>
+
+<p>Lite-server is configured to serve, index.html placed in the root of your component with live-reload for specified environment.</p>
+
+<h3>
+<a id="serve-dev-environment" class="anchor" href="#serve-dev-environment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Serve dev-environment</h3>
+
+<p>To serve up the un-minified code run following command. This command starts up lite-server and gulp watch task which gives you live-reload when ./dist/component.css, ./dist/component.js or ./index.html is changed:</p>
+
+<div class="highlight highlight-source-shell"><pre>npm run serve:dev</pre></div>
+
+<h3>
+<a id="serve-production-environment" class="anchor" href="#serve-production-environment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Serve production-environment</h3>
+
+<p>To serve minified &amp; bundled code run the following command. This command starts up lite-server and gulp watch task which gives you live-reload when ./dist/component.css, ./dist/component.min.js or ./index.html is changed.</p>
+
+<div class="highlight highlight-source-shell"><pre>npm run serve:build</pre></div>
+
+<h2>
+<a id="systemjs-sfx" class="anchor" href="#systemjs-sfx" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SystemJS (SFX)</h2>
+
+<p>SystemJS is configured to build a self-executing bundle. <strong>Consumers of your components are therefore NOT required to use SystenJS.</strong> <a href="https://github.com/systemjs/builder#self-executing-sfx-bundles">Read more</a></p>
+
+<h2>
+<a id="commitizen-optional" class="anchor" href="#commitizen-optional" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Commitizen (optional)</h2>
+
+<p>To use commitizen use following command. <strong>Commitizen is optional</strong> and if you don't wanna use commitizen you can just commit as you're used to. You will just need to follow <a href="https://docs.google.com/document/d/1rk04jEuGfk9kYzfqCuOlPTSJw3hEDZJTBN5E5f1SALo">the AngularJS commit message guidelines.</a>
+You can read more about commitizen <a href="https://commitizen.github.io/cz-cli/">here</a></p>
+
+<div class="highlight highlight-source-shell"><pre>npm run commit</pre></div>
+
+<h2>
+<a id="validate-commit-msg" class="anchor" href="#validate-commit-msg" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>validate-commit-msg</h2>
+
+<p>Validates commit messages on each commit according to <a href="https://docs.google.com/document/d/1rk04jEuGfk9kYzfqCuOlPTSJw3hEDZJTBN5E5f1SALo">the AngularJS commit message guidelines</a></p>
+
+<h2>
+<a id="build" class="anchor" href="#build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build</h2>
+
+<p>To build your component run following command. This command will minify your css, compile (es2015), ensures to annotate your angular dependencies, inline all your templates, bundle and minify your javascript.</p>
+
+<div class="highlight highlight-source-shell"><pre>gulp build</pre></div>
+
+<h2>
+<a id="testing" class="anchor" href="#testing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Testing</h2>
+
+<h3>
+<a id="single-run" class="anchor" href="#single-run" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Single run</h3>
+
+<div class="highlight highlight-source-shell"><pre>npm run <span class="pl-c1">test</span></pre></div>
+
+<h3>
+<a id="watch" class="anchor" href="#watch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Watch</h3>
+
+<div class="highlight highlight-source-shell"><pre>npm run karma</pre></div>
+        </section>
+
+        <footer>
+          nReplaceWithValidation is maintained by <a href="https://github.com/nodes-frontend">nodes-frontend</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
