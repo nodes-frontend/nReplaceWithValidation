@@ -29,7 +29,7 @@ namespace nReplaceWithValidation {
         scope: INReplaceWithValidationScope = {
             name: '@',
             text: '@',
-            messages: '='
+            messages: '=?'
         };
 
         private linkFn(scope: any, element: any, attrs: any, formController: any) {

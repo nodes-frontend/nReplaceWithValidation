@@ -334,7 +334,7 @@ $__System.register("6", [], function(exports_1, context_1) {
             this.scope = {
               name: '@',
               text: '@',
-              messages: '='
+              messages: '=?'
             };
           }
           NReplaceWithValidation.instance = function() {
