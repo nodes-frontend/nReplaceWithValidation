@@ -2,7 +2,7 @@ namespace nReplaceWithValidation {
 	'use strict';
 	
 	const dependencies = [
-		'templates',
+		'nReplaceWithValidation.templates',
 		'ngMessages'
 	];
 

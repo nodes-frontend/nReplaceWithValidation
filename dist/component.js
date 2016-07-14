@@ -9,7 +9,7 @@ $__System.register("2", [], function(exports_1, context_1) {
   return {
     setters: [],
     execute: function() {
-      exports_1("default", angular.module("templates", []).run(["$templateCache", function($templateCache) {
+      exports_1("default", angular.module("nReplaceWithValidation.templates", []).run(["$templateCache", function($templateCache) {
         $templateCache.put("src/nReplaceWithValidation.html", "<div>\n    <span ng-show=\"nReplaceWithValidation.input.$valid || nReplaceWithValidation.input.$pristine\"\n          ng-class=\"{\'is-invalid-input\': nReplaceWithValidation.input.$invalid && !nReplaceWithValidation.input.$pristine}\">\n        {{nReplaceWithValidation.text}}\n    </span>\n\n    <span role=\"alert\"\n          class=\"ng-messages\"\n          ng-messages=\"nReplaceWithValidation.input.$error\"\n          ng-show=\"!nReplaceWithValidation.input.$pristine\">\n\n        <span class=\"is-invalid-label\" ng-message-exp=\"key\" ng-repeat=\"(key, message) in nReplaceWithValidation.messages track by $index\">\n            {{message}}\n        </span>\n\n    </span>\n\n</div>");
       }]));
     }
@@ -264,7 +264,7 @@ $__System.register("4", [], function(exports_1, context_1) {
       var nReplaceWithValidation;
       (function(nReplaceWithValidation) {
         'use strict';
-        var dependencies = ['templates', 'ngMessages'];
+        var dependencies = ['nReplaceWithValidation.templates', 'ngMessages'];
         angular.module('nReplaceWithValidation', dependencies);
       })(nReplaceWithValidation || (nReplaceWithValidation = {}));
     }
