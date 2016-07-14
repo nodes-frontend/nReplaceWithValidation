@@ -9,7 +9,7 @@ describe('nReplaceWithValidation.directive', () => {
 	let $compile, $rootScope, scope, element, controller, form;
 	
 	beforeEach(() => {
-		angular.module('templates', []);
+		angular.module('nReplaceWithValidation.templates', []);
 		module('nReplaceWithValidation');
 		module('src/nReplaceWithValidation.html');
 		
