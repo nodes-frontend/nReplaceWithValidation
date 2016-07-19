@@ -26,6 +26,7 @@
                             <!-- With default messages -->
                             <span n-replace-with-validation
                                   text="Username"
+                                  messages="demo.messages"
                                   name="username"></span>
 
                             <input name="username" type="text" placeholder="Username" ng-model="demo.user.username" aria-describedby="usernameHelpText" required>
@@ -47,7 +48,6 @@
                                id="passwordHelpText"
                                n-replace-with-validation
                                text="Your password must have at least 10 characters"
-                               messages="demo.messages"
                                name="password"></p>
                             <input name="password" type="password" placeholder="Password" ng-model="demo.user.password" aria-describedby="passwordHelpText" required minlength="10">
                         </label>
@@ -84,20 +84,32 @@
         <script>
             (function() {
 
-                angular.module('demoApp', ['nReplaceWithValidation']);
+                angular.module('demoApp', ['nReplaceWithValidation']).config(function(nReplaceWithValidationConfigProvider) {
+                    console.log('yiir', nReplaceWithValidationConfigProvider);
+                });
 
                 angular
                     .module('demoApp')
                     .controller('demoController', function() {
                         var vm = this;
+
+                        vm.user = {
+                            username: 'username'
+                        };
+
                         vm.messages = {
                             required: 'This is a custom required message',
-                            minlength: 'This is a custom minLength message'
+                            minlength: 'This is a custom minLength message',
+                            blacklisted: 'This is a custom blacklist message'
                         };
                         vm.submit = submit;
 
                         function submit() {
-                            alert('SUBMIT IT!!!');
+
+                            vm.form['username'].$validators['blacklisted'] = function (modelValue, viewValue) {
+                                return viewValue !== 'username';
+                            };
+                            vm.form['username'].$validate();
                         }
 
                     });
