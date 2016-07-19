@@ -61,6 +61,7 @@ namespace nReplaceWithValidation {
         }
         
         private useFallback(): boolean {
+            if(this.input.$pristine && !this.input.$$parentForm.$submitted) return false;
             return !this.messages[ Object.keys(this.input.$error)[0] ] && this.input.$invalid;
         }
     }

@@ -360,6 +360,8 @@ $__System.register("6", [], function(exports_1, context_1) {
             }
           }
           ComponentDirectiveController.prototype.useFallback = function() {
+            if (this.input.$pristine && !this.input.$$parentForm.$submitted)
+              return false;
             return !this.messages[Object.keys(this.input.$error)[0]] && this.input.$invalid;
           };
           ComponentDirectiveController.$inject = ['$sce', 'nReplaceWithValidationConfig'];
