@@ -38,11 +38,31 @@ namespace nReplaceWithValidation {
     }
 
     class ComponentDirectiveController {
-        private messages: Object;
+        private messages: any;
+        private input: any;
 
-        static $inject: Array<string> = ['nReplaceWithValidationConfig'];
-        constructor(private nReplaceWithValidationConfig: INReplaceWithValidationProvider) {
+        static $inject: Array<string> = ['$sce', '$exceptionHandler', 'nReplaceWithValidationConfig'];
+        constructor(private $sce: any,
+                    private $exceptionHandler: any,
+                    private nReplaceWithValidationConfig: INReplaceWithValidationProvider) {
+
+            // Extend messages with config (defaults)
             this.messages = angular.extend({}, nReplaceWithValidationConfig.config, this.messages);
+
+            // Make sure fallback exists
+            if( !this.messages.hasOwnProperty('fallback') ) {
+                this.messages.fallback = 'This will be used if error message is not configured. (default)';
+            }
+
+            // HTML support
+            for(let message in this.messages) {
+                this.messages[message] = this.$sce.trustAsHtml(this.messages[message]);
+            }
+
+        }
+        
+        private useFallback(): boolean {
+            return !this.messages[ Object.keys(this.input.$error)[0] ] && this.input.$invalid;
         }
     }
 

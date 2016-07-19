@@ -10,7 +10,7 @@ $__System.register("2", [], function(exports_1, context_1) {
     setters: [],
     execute: function() {
       exports_1("default", angular.module("nReplaceWithValidation.templates", []).run(["$templateCache", function($templateCache) {
-        $templateCache.put("src/nReplaceWithValidation.html", "<div>\n    <span ng-show=\"nReplaceWithValidation.input.$valid || (nReplaceWithValidation.input.$pristine && !nReplaceWithValidation.input.$$parentForm.$submitted)\"\n          ng-class=\"{\'is-invalid-input\': nReplaceWithValidation.input.$invalid && !nReplaceWithValidation.input.$pristine}\">\n        {{nReplaceWithValidation.text}}\n    </span>\n\n    <span role=\"alert\"\n          class=\"ng-messages\"\n          ng-messages=\"nReplaceWithValidation.input.$error\"\n          ng-show=\"!nReplaceWithValidation.input.$pristine || nReplaceWithValidation.input.$$parentForm.$submitted\">\n\n        <span class=\"is-invalid-label\" ng-message-exp=\"key\" ng-repeat=\"(key, message) in nReplaceWithValidation.messages track by $index\">\n            {{message}}\n        </span>\n\n    </span>\n\n</div>");
+        $templateCache.put("src/nReplaceWithValidation.html", "<div>\n    <span ng-show=\"nReplaceWithValidation.input.$valid || (nReplaceWithValidation.input.$pristine && !nReplaceWithValidation.input.$$parentForm.$submitted)\"\n          ng-class=\"{\'is-invalid-input\': nReplaceWithValidation.input.$invalid && !nReplaceWithValidation.input.$pristine}\">\n        {{nReplaceWithValidation.text}}\n    </span>\n\n    <span role=\"alert\"\n          class=\"ng-messages\"\n          ng-messages=\"nReplaceWithValidation.input.$error\"\n          ng-show=\"!nReplaceWithValidation.input.$pristine || nReplaceWithValidation.input.$$parentForm.$submitted\">\n\n        <span class=\"is-invalid-label\" ng-message-exp=\"key\" ng-repeat=\"(key, message) in nReplaceWithValidation.messages track by $index\">\n            {{message}}\n        </span>\n\n\n    </span>\n    <span ng-if=\"nReplaceWithValidation.useFallback()\" class=\"is-invalid-label\" ng-bind-html=\"nReplaceWithValidation.messages.fallback\"></span>\n\n</div>");
       }]));
     }
   };
@@ -287,7 +287,8 @@ $__System.register("5", [], function(exports_1, context_1) {
               required: 'Please enter a value for this field. (default)',
               minlength: 'Please enter a value for at least 6 characters long (default)',
               maxlength: 'This field can be at most 15 characters long. (default)',
-              email: 'This field must be a valid email address. (default)'
+              email: 'This field must be a valid email address. (default)',
+              fallback: 'This will be used if error message is not configured. (default)'
             };
             this.$get = function() {
               return {config: _this.config};
@@ -347,11 +348,22 @@ $__System.register("6", [], function(exports_1, context_1) {
           return NReplaceWithValidation;
         }());
         var ComponentDirectiveController = (function() {
-          function ComponentDirectiveController(nReplaceWithValidationConfig) {
+          function ComponentDirectiveController($sce, $exceptionHandler, nReplaceWithValidationConfig) {
+            this.$sce = $sce;
+            this.$exceptionHandler = $exceptionHandler;
             this.nReplaceWithValidationConfig = nReplaceWithValidationConfig;
             this.messages = angular.extend({}, nReplaceWithValidationConfig.config, this.messages);
+            if (!this.messages.hasOwnProperty('fallback')) {
+              this.messages.fallback = 'This will be used if error message is not configured. (default)';
+            }
+            for (var message in this.messages) {
+              this.messages[message] = this.$sce.trustAsHtml(this.messages[message]);
+            }
           }
-          ComponentDirectiveController.$inject = ['nReplaceWithValidationConfig'];
+          ComponentDirectiveController.prototype.useFallback = function() {
+            return !this.messages[Object.keys(this.input.$error)[0]] && this.input.$invalid;
+          };
+          ComponentDirectiveController.$inject = ['$sce', '$exceptionHandler', 'nReplaceWithValidationConfig'];
           return ComponentDirectiveController;
         }());
         angular.module('nReplaceWithValidation').directive('nReplaceWithValidation', NReplaceWithValidation.instance);
