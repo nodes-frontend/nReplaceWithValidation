@@ -31,7 +31,8 @@ describe('nReplaceWithValidation.provider', () => {
 			required: 'Please enter a value for this field. (default)',
 			minlength: 'Please enter a value for at least 6 characters long (default)',
 			maxlength: 'This field can be at most 15 characters long. (default)',
-			email: 'This field must be a valid email address. (default)'
+			email: 'This field must be a valid email address. (default)',
+			fallback: 'This will be used if error message is not configured. (default)'
 		};
 
 		expect(actual).toEqual(expected);
@@ -61,7 +62,8 @@ describe('nReplaceWithValidation.provider', () => {
 			required: 'testing',
 			minlength: 'Please enter a value for at least 6 characters long (default)',
 			maxlength: 'This field can be at most 15 characters long. (default)',
-			email: 'This field must be a valid email address. (default)'
+			email: 'This field must be a valid email address. (default)',
+			fallback: 'This will be used if error message is not configured. (default)'
 		};
 
 		expect(actual).toEqual(expected);
@@ -78,7 +80,8 @@ describe('nReplaceWithValidation.provider', () => {
 			required: 'Please enter a value for this field. (default)',
 			minlength: 'Please enter a value for at least 6 characters long (default)',
 			maxlength: 'This field can be at most 15 characters long. (default)',
-			email: 'This field must be a valid email address. (default)'
+			email: 'This field must be a valid email address. (default)',
+			fallback: 'This will be used if error message is not configured. (default)'
 		};
 
 		expect(actual).toEqual(expected);

@@ -41,9 +41,8 @@ namespace nReplaceWithValidation {
         private messages: any;
         private input: any;
 
-        static $inject: Array<string> = ['$sce', '$exceptionHandler', 'nReplaceWithValidationConfig'];
+        static $inject: Array<string> = ['$sce', 'nReplaceWithValidationConfig'];
         constructor(private $sce: any,
-                    private $exceptionHandler: any,
                     private nReplaceWithValidationConfig: INReplaceWithValidationProvider) {
 
             // Extend messages with config (defaults)

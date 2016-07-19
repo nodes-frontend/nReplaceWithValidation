@@ -348,9 +348,8 @@ $__System.register("6", [], function(exports_1, context_1) {
           return NReplaceWithValidation;
         }());
         var ComponentDirectiveController = (function() {
-          function ComponentDirectiveController($sce, $exceptionHandler, nReplaceWithValidationConfig) {
+          function ComponentDirectiveController($sce, nReplaceWithValidationConfig) {
             this.$sce = $sce;
-            this.$exceptionHandler = $exceptionHandler;
             this.nReplaceWithValidationConfig = nReplaceWithValidationConfig;
             this.messages = angular.extend({}, nReplaceWithValidationConfig.config, this.messages);
             if (!this.messages.hasOwnProperty('fallback')) {
@@ -363,7 +362,7 @@ $__System.register("6", [], function(exports_1, context_1) {
           ComponentDirectiveController.prototype.useFallback = function() {
             return !this.messages[Object.keys(this.input.$error)[0]] && this.input.$invalid;
           };
-          ComponentDirectiveController.$inject = ['$sce', '$exceptionHandler', 'nReplaceWithValidationConfig'];
+          ComponentDirectiveController.$inject = ['$sce', 'nReplaceWithValidationConfig'];
           return ComponentDirectiveController;
         }());
         angular.module('nReplaceWithValidation').directive('nReplaceWithValidation', NReplaceWithValidation.instance);
