@@ -41,8 +41,9 @@ namespace nReplaceWithValidation {
         private messages: any;
         private input: any;
 
-        static $inject: Array<string> = ['$sce', 'nReplaceWithValidationConfig'];
-        constructor(private $sce: any,
+        static $inject: Array<string> = ['$scope', '$sce', 'nReplaceWithValidationConfig'];
+        constructor(private $scope: any,
+                    private $sce: any,
                     private nReplaceWithValidationConfig: INReplaceWithValidationProvider) {
 
             // Extend messages with config (defaults)
@@ -58,11 +59,19 @@ namespace nReplaceWithValidation {
                 this.messages[message] = this.$sce.trustAsHtml(this.messages[message]);
             }
 
-        }
-        
-        private useFallback(): boolean {
-            if(this.input.$pristine && !this.input.$$parentForm.$submitted) return false;
-            return !this.messages[ Object.keys(this.input.$error)[0] ] && this.input.$invalid;
+            // Make sure all needed messages exists in this.messages otherwise create fallback
+            let self = this;
+            this.$scope.$watchCollection('nReplaceWithValidation.input.$validators', (newValue) => {
+                if(!newValue) return;
+
+                for(var validator in newValue) {
+
+                     if( !self.messages.hasOwnProperty(validator) ) {
+                         self.messages[validator] = self.messages.fallback;
+                     }
+
+                }
+            });
         }
     }
 

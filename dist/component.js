@@ -10,7 +10,7 @@ $__System.register("2", [], function(exports_1, context_1) {
     setters: [],
     execute: function() {
       exports_1("default", angular.module("nReplaceWithValidation.templates", []).run(["$templateCache", function($templateCache) {
-        $templateCache.put("src/nReplaceWithValidation.html", "<div>\n    <span ng-show=\"nReplaceWithValidation.input.$valid || (nReplaceWithValidation.input.$pristine && !nReplaceWithValidation.input.$$parentForm.$submitted)\"\n          ng-class=\"{\'is-invalid-input\': nReplaceWithValidation.input.$invalid && !nReplaceWithValidation.input.$pristine}\">\n        {{nReplaceWithValidation.text}}\n    </span>\n\n    <span role=\"alert\"\n          class=\"ng-messages\"\n          ng-messages=\"nReplaceWithValidation.input.$error\"\n          ng-show=\"!nReplaceWithValidation.input.$pristine || nReplaceWithValidation.input.$$parentForm.$submitted\">\n\n        <span class=\"is-invalid-label\" ng-message-exp=\"key\" ng-repeat=\"(key, message) in nReplaceWithValidation.messages track by $index\">\n            {{message}}\n        </span>\n\n\n    </span>\n    <span ng-if=\"nReplaceWithValidation.useFallback()\" class=\"is-invalid-label\" ng-bind-html=\"nReplaceWithValidation.messages.fallback\"></span>\n\n</div>");
+        $templateCache.put("src/nReplaceWithValidation.html", "<div>\n    <span ng-show=\"nReplaceWithValidation.input.$valid || (nReplaceWithValidation.input.$pristine && !nReplaceWithValidation.input.$$parentForm.$submitted)\"\n          ng-class=\"{\'is-invalid-input\': nReplaceWithValidation.input.$invalid && !nReplaceWithValidation.input.$pristine}\">\n        {{nReplaceWithValidation.text}}\n    </span>\n\n    <span role=\"alert\"\n          class=\"ng-messages\"\n          ng-messages=\"nReplaceWithValidation.input.$error\"\n          ng-show=\"!nReplaceWithValidation.input.$pristine || nReplaceWithValidation.input.$$parentForm.$submitted\">\n\n        <span class=\"is-invalid-label\" ng-message-exp=\"key\" ng-repeat=\"(key, message) in nReplaceWithValidation.messages track by $index\">\n            <span ng-bind-html=\"message\"></span>\n        </span>\n\n    </span>\n\n</div>");
       }]));
     }
   };
@@ -348,7 +348,8 @@ $__System.register("6", [], function(exports_1, context_1) {
           return NReplaceWithValidation;
         }());
         var ComponentDirectiveController = (function() {
-          function ComponentDirectiveController($sce, nReplaceWithValidationConfig) {
+          function ComponentDirectiveController($scope, $sce, nReplaceWithValidationConfig) {
+            this.$scope = $scope;
             this.$sce = $sce;
             this.nReplaceWithValidationConfig = nReplaceWithValidationConfig;
             this.messages = angular.extend({}, nReplaceWithValidationConfig.config, this.messages);
@@ -358,13 +359,18 @@ $__System.register("6", [], function(exports_1, context_1) {
             for (var message in this.messages) {
               this.messages[message] = this.$sce.trustAsHtml(this.messages[message]);
             }
+            var self = this;
+            this.$scope.$watchCollection('nReplaceWithValidation.input.$validators', function(newValue) {
+              if (!newValue)
+                return;
+              for (var validator in newValue) {
+                if (!self.messages.hasOwnProperty(validator)) {
+                  self.messages[validator] = self.messages.fallback;
+                }
+              }
+            });
           }
-          ComponentDirectiveController.prototype.useFallback = function() {
-            if (this.input.$pristine && !this.input.$$parentForm.$submitted)
-              return false;
-            return !this.messages[Object.keys(this.input.$error)[0]] && this.input.$invalid;
-          };
-          ComponentDirectiveController.$inject = ['$sce', 'nReplaceWithValidationConfig'];
+          ComponentDirectiveController.$inject = ['$scope', '$sce', 'nReplaceWithValidationConfig'];
           return ComponentDirectiveController;
         }());
         angular.module('nReplaceWithValidation').directive('nReplaceWithValidation', NReplaceWithValidation.instance);

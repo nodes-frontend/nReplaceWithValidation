@@ -10,11 +10,9 @@
           ng-show="!nReplaceWithValidation.input.$pristine || nReplaceWithValidation.input.$$parentForm.$submitted">
 
         <span class="is-invalid-label" ng-message-exp="key" ng-repeat="(key, message) in nReplaceWithValidation.messages track by $index">
-            {{message}}
+            <span ng-bind-html="message"></span>
         </span>
 
-
     </span>
-    <span ng-if="nReplaceWithValidation.useFallback()" class="is-invalid-label" ng-bind-html="nReplaceWithValidation.messages.fallback"></span>
 
 </div>
