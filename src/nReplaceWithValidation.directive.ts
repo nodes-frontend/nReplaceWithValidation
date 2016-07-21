@@ -56,9 +56,11 @@ namespace nReplaceWithValidation {
 
             // HTML support
             for(let message in this.messages) {
-                this.messages[message] = this.$sce.trustAsHtml(this.messages[message]);
+                if(typeof this.messages[message] === 'string') {
+                    this.messages[message] = this.$sce.trustAsHtml(this.messages[message]);
+                }
             }
-
+            
             // Make sure all needed messages exists in this.messages otherwise create fallback
             let self = this;
             this.$scope.$watchCollection('nReplaceWithValidation.input.$validators', (newValue) => {

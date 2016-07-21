@@ -83,13 +83,8 @@
 
         <script>
             (function() {
-
-                angular.module('demoApp', ['nReplaceWithValidation']).config(function(nReplaceWithValidationConfigProvider) {
-                    console.log('yiir', nReplaceWithValidationConfigProvider);
-                });
-
                 angular
-                    .module('demoApp')
+                    .module('demoApp', ['nReplaceWithValidation'])
                     .controller('demoController', function() {
                         var vm = this;
 
@@ -100,7 +95,6 @@
                         vm.messages = {
                             required: 'This is a custom required message',
                             minlength: 'This is a custom minLength message',
-                            //blacklisted: 'This is a custom blacklist message',
                             fallback: 'Please contact support <a href="https://support.google.com/">contact@support.com</a>'
                         };
                         vm.submit = submit;

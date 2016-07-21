@@ -357,7 +357,9 @@ $__System.register("6", [], function(exports_1, context_1) {
               this.messages.fallback = 'This will be used if error message is not configured. (default)';
             }
             for (var message in this.messages) {
-              this.messages[message] = this.$sce.trustAsHtml(this.messages[message]);
+              if (typeof this.messages[message] === 'string') {
+                this.messages[message] = this.$sce.trustAsHtml(this.messages[message]);
+              }
             }
             var self = this;
             this.$scope.$watchCollection('nReplaceWithValidation.input.$validators', function(newValue) {
