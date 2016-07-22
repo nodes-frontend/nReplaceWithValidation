@@ -22,12 +22,11 @@ describe('nReplaceWithValidation.directive', () => {
 			var html = `
 				<form name="${formName}" novalidate>
 						<label>
-                            <!-- With default messages -->
                             <span n-replace-with-validation
                                   text="${inputText}"
                                   name="${inputName}"></span>
                                   
-                            <input name="username" type="text" value="blabla" placeholder="Username" ng-model="demo.user.username" aria-describedby="usernameHelpText" required>
+                            <input name="${inputName}" type="text" placeholder="Username" ng-model="demo.user.username" aria-describedby="usernameHelpText" required>
                         </label>				
 				</form>
 			`;
@@ -46,8 +45,8 @@ describe('nReplaceWithValidation.directive', () => {
 	});
 
 	// What should the feature do?
-	it('should compile the template, with ng-messages', () => {
-		expect( element.html() ).toContain('ng-messages');
+	it('should compile the template, only including label and not ng-messages', () => {
+		expect( element.html() ).not.toContain('ng-messages');
 	});
 
 	// What should the feature do?
@@ -60,8 +59,8 @@ describe('nReplaceWithValidation.directive', () => {
 
 		const actual = element.html();
 
-		expect(actual).toContain('class="ng-messages ng-active ng-hide"');
-		expect(actual).not.toContain('class="ng-binding ng-hide is-invalid-input"');
+		expect(actual).not.toContain('class="ng-messages ng-scope ng-active"');
+		expect(actual).toContain('n-replace-with--original');
 	});
 
 	// What should the feature do?
@@ -73,8 +72,9 @@ describe('nReplaceWithValidation.directive', () => {
 		scope.$apply();
 
 		const actual = element.html();
-		expect(actual).toContain('class="ng-binding ng-hide is-invalid-input"');
-		expect(actual).not.toContain('class="ng-messages ng-active ng-hide"');
+
+		expect(actual).not.toContain('class="n-replace-with--original"');
+		expect(actual).toContain('class="ng-messages ng-scope ng-active"');
 	});
 
 	// What should the feature do?
