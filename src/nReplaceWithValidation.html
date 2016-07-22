@@ -8,7 +8,7 @@
     <span role="alert"
           class="ng-messages"
           ng-messages="nReplaceWithValidation.input.$error"
-          ng-if="!nReplaceWithValidation.input.$pristine || nReplaceWithValidation.input.$$parentForm.$submitted">
+          ng-if="(!nReplaceWithValidation.input.$valid && nReplaceWithValidation.input.$$parentForm.$submitted) || (!nReplaceWithValidation.input.$valid && !nReplaceWithValidation.input.$pristine)">
 
         <span class="is-invalid-label" ng-message-exp="key" ng-repeat="(key, message) in nReplaceWithValidation.messages track by $index" ng-bind-html="message"></span>
 
