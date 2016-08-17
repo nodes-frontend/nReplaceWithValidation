@@ -19,20 +19,22 @@
             <form name="demo.form" ng-submit="demo.submit()" novalidate>
 
                 <div class="row">
-
+                    
                     <div class="small-12 medium-6 columns">
-
-                        <label>
-                            <!-- With default messages -->
-                            <span n-replace-with-validation
-                                  text="Username"
-                                  messages="demo.messages"
-                                  name="username"></span>
-
-                            <input name="username" type="text" placeholder="Username" ng-model="demo.user.username" aria-describedby="usernameHelpText" required>
-
-                        </label>
-
+                        <label for="username"
+                               n-replace-with-validation
+                               text="Full Name"
+                               messages="demo.messages"
+                               multiple="true"
+                               name="username"></label>
+    
+                        <input type="text"
+                               name="username"
+                               id="username"
+                               placeholder="Placeholder"
+                               ng-model="demo.user.username"
+                               aria-describedby="usernameHelpText"
+                               required ng-minlength="2" ng-maxlength="5" ng-pattern="/^([^0-9]*)$/">
                     </div>
 
                 </div>
@@ -47,9 +49,15 @@
                             <p class="help-text"
                                id="passwordHelpText"
                                n-replace-with-validation
+                               multiple="false"
                                text="Your password must have at least 10 characters"
                                name="password"></p>
-                            <input name="password" type="password" placeholder="Password" ng-model="demo.user.password" aria-describedby="passwordHelpText" required minlength="10">
+                            <input name="password"
+                                   type="password"
+                                   placeholder="Password"
+                                   ng-model="demo.user.password"
+                                   aria-describedby="passwordHelpText"
+                                   required ng-minlength="2" ng-maxlength="5" ng-pattern="/^([^0-9]*)$/">
                         </label>
 
                     </div>
@@ -67,7 +75,8 @@
                 <div class="row">
 
                     <div class="small-12 medium-6 columns">
-                        <pre>demo.form.$error = {{demo.form.$error | json}}</pre>
+                        <pre>demo.form.username.$error = {{demo.form.username.$error | json}}</pre>
+                        <pre>demo.form.password.$error = {{demo.form.password.$error | json}}</pre>
                     </div>
 
                 </div>
@@ -89,7 +98,7 @@
                         var vm = this;
 
                         vm.user = {
-                            username: 'username'
+                            username: 'username123'
                         };
 
                         vm.messages = {

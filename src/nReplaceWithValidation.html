@@ -1,17 +1,19 @@
-<div>
-    <span class="n-replace-with--original"
-          ng-if="nReplaceWithValidation.input.$valid || (nReplaceWithValidation.input.$pristine && !nReplaceWithValidation.input.$$parentForm.$submitted)"
-          ng-class="{'is-invalid-input': nReplaceWithValidation.input.$invalid && !nReplaceWithValidation.input.$pristine}">
-        {{nReplaceWithValidation.text}}
+<span class="n-replace-with__original"
+      ng-if="nReplaceWithValidation.input.$valid || (nReplaceWithValidation.input.$pristine && !nReplaceWithValidation.input.$$parentForm.$submitted)"
+      ng-class="{'is-invalid-input': nReplaceWithValidation.input.$invalid && !nReplaceWithValidation.input.$pristine}">
+    {{nReplaceWithValidation.text}}
+</span>
+
+<span role="alert"
+      class="ng-messages n-replace-with-validation__messages"
+      ng-messages="nReplaceWithValidation.input.$error"
+      ng-if="(!nReplaceWithValidation.input.$valid && nReplaceWithValidation.input.$$parentForm.$submitted) || (!nReplaceWithValidation.input.$valid && !nReplaceWithValidation.input.$pristine)"
+      ng-attr-multiple="{{nReplaceWithValidation.multiple}}">
+
+    <span class="is-invalid-label n-replace-with-validation__message"
+          ng-message-exp="key"
+          ng-repeat="(key, message) in nReplaceWithValidation.messages track by $index"
+          ng-bind-html="message">
     </span>
 
-    <span role="alert"
-          class="ng-messages"
-          ng-messages="nReplaceWithValidation.input.$error"
-          ng-if="(!nReplaceWithValidation.input.$valid && nReplaceWithValidation.input.$$parentForm.$submitted) || (!nReplaceWithValidation.input.$valid && !nReplaceWithValidation.input.$pristine)">
-
-        <span class="is-invalid-label" ng-message-exp="key" ng-repeat="(key, message) in nReplaceWithValidation.messages track by $index" ng-bind-html="message"></span>
-
-    </span>
-
-</div>
+</span>

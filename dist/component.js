@@ -10,7 +10,7 @@ $__System.register("2", [], function(exports_1, context_1) {
     setters: [],
     execute: function() {
       exports_1("default", angular.module("nReplaceWithValidation.templates", []).run(["$templateCache", function($templateCache) {
-        $templateCache.put("src/nReplaceWithValidation.html", "<div>\n    <span class=\"n-replace-with--original\"\n          ng-if=\"nReplaceWithValidation.input.$valid || (nReplaceWithValidation.input.$pristine && !nReplaceWithValidation.input.$$parentForm.$submitted)\"\n          ng-class=\"{\'is-invalid-input\': nReplaceWithValidation.input.$invalid && !nReplaceWithValidation.input.$pristine}\">\n        {{nReplaceWithValidation.text}}\n    </span>\n\n    <span role=\"alert\"\n          class=\"ng-messages\"\n          ng-messages=\"nReplaceWithValidation.input.$error\"\n          ng-if=\"(!nReplaceWithValidation.input.$valid && nReplaceWithValidation.input.$$parentForm.$submitted) || (!nReplaceWithValidation.input.$valid && !nReplaceWithValidation.input.$pristine)\">\n\n        <span class=\"is-invalid-label\" ng-message-exp=\"key\" ng-repeat=\"(key, message) in nReplaceWithValidation.messages track by $index\" ng-bind-html=\"message\"></span>\n\n    </span>\n\n</div>");
+        $templateCache.put("src/nReplaceWithValidation.html", "<span class=\"n-replace-with__original\"\n      ng-if=\"nReplaceWithValidation.input.$valid || (nReplaceWithValidation.input.$pristine && !nReplaceWithValidation.input.$$parentForm.$submitted)\"\n      ng-class=\"{\'is-invalid-input\': nReplaceWithValidation.input.$invalid && !nReplaceWithValidation.input.$pristine}\">\n    {{nReplaceWithValidation.text}}\n</span>\n\n<span role=\"alert\"\n      class=\"ng-messages n-replace-with-validation__messages\"\n      ng-messages=\"nReplaceWithValidation.input.$error\"\n      ng-if=\"(!nReplaceWithValidation.input.$valid && nReplaceWithValidation.input.$$parentForm.$submitted) || (!nReplaceWithValidation.input.$valid && !nReplaceWithValidation.input.$pristine)\"\n      ng-attr-multiple=\"{{nReplaceWithValidation.multiple}}\">\n\n    <span class=\"is-invalid-label n-replace-with-validation__message\"\n          ng-message-exp=\"key\"\n          ng-repeat=\"(key, message) in nReplaceWithValidation.messages track by $index\"\n          ng-bind-html=\"message\">\n    </span>\n\n</span>");
       }]));
     }
   };
@@ -288,6 +288,9 @@ $__System.register("5", [], function(exports_1, context_1) {
               minlength: 'Please enter a value for at least 6 characters long (default)',
               maxlength: 'This field can be at most 15 characters long. (default)',
               email: 'This field must be a valid email address. (default)',
+              min: 'The value is too low. (default)',
+              max: 'The value is too high. (default)',
+              pattern: 'The value does match the validation pattern. (default)',
               fallback: 'This will be used if error message is not configured. (default)'
             };
             this.$get = function() {
@@ -330,12 +333,12 @@ $__System.register("6", [], function(exports_1, context_1) {
             this.restrict = 'A';
             this.templateUrl = 'src/nReplaceWithValidation.html';
             this.controllerAs = controllerAs;
-            this.replace = true;
             this.require = '^form';
             this.scope = {
               name: '@',
               text: '@',
-              messages: '=?'
+              messages: '=?',
+              multiple: '@'
             };
           }
           NReplaceWithValidation.instance = function() {

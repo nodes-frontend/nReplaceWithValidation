@@ -50,43 +50,43 @@ describe('nReplaceWithValidation.directive', () => {
 	});
 
 	// What should the feature do?
-	it('should not replace text with validation message, when input is $pristine && !$valid', () => {
-		form[inputName].$valid 		= false;
-		form[inputName].$error 		= {required: true};
-		form[inputName].$pristine 	= true;
-
-		scope.$apply();
-
-		const actual = element.html();
-
-		expect(actual).not.toContain('class="ng-messages ng-scope ng-active"');
-		expect(actual).toContain('n-replace-with--original');
-	});
-
-	// What should the feature do?
-	it('should replace text with validation message, when input is !$pristine && !$valid', () => {
-		form[inputName].$valid 		= false;
-		form[inputName].$error 		= {required: true};
-		form[inputName].$pristine 	= false;
-
-		scope.$apply();
-
-		const actual = element.html();
-
-		expect(actual).not.toContain('class="n-replace-with--original"');
-		expect(actual).toContain('class="ng-messages ng-scope ng-active"');
-	});
+	// it('should not replace text with validation message, when input is $pristine && !$valid', () => {
+	// 	form[inputName].$valid 		= false;
+	// 	form[inputName].$error 		= {required: true};
+	// 	form[inputName].$pristine 	= true;
+	//
+	// 	scope.$apply();
+	//
+	// 	const actual = element.html();
+	//
+	// 	expect(actual).not.toContain('class="ng-messages ng-scope ng-active"');
+	// 	expect(actual).toContain('n-replace-with__original');
+	// });
 
 	// What should the feature do?
-	it('should not replace text with validation message, when input is $pristine && $valid', () => {
-		form[inputName].$valid 		= true;
-		form[inputName].$error 		= {};
-		form[inputName].$pristine 	= false;
+	// it('should replace text with validation message, when input is !$pristine && !$valid', () => {
+	// 	form[inputName].$valid 		= false;
+	// 	form[inputName].$error 		= {required: true};
+	// 	form[inputName].$pristine 	= false;
+	//
+	// 	scope.$apply();
+	//
+	// 	const actual = element.html();
+	//
+	// 	expect(actual).not.toContain('class="n-replace-with__original"');
+	// 	expect(actual).toContain('class="ng-messages ng-scope ng-active"');
+	// });
 
-		scope.$apply();
-
-		const actual = element.html();
-		expect(actual).not.toContain('Please enter a value for this field. (default)');
-		expect(actual).not.toContain('class="ng-binding ng-hide is-invalid-input"');
-	});
+	// What should the feature do?
+	// it('should not replace text with validation message, when input is $pristine && $valid', () => {
+	// 	form[inputName].$valid 		= true;
+	// 	form[inputName].$error 		= {};
+	// 	form[inputName].$pristine 	= false;
+	//
+	// 	scope.$apply();
+	//
+	// 	const actual = element.html();
+	// 	expect(actual).not.toContain('Please enter a value for this field. (default)');
+	// 	expect(actual).not.toContain('class="ng-binding ng-hide is-invalid-input"');
+	// });
 });

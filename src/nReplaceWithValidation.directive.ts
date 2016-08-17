@@ -4,7 +4,8 @@ namespace nReplaceWithValidation {
     interface INReplaceWithValidationScope {
         name: string,
         text: string
-        messages: any
+        messages: any,
+        multiple: string
     }
 
     const controllerAs: string = 'nReplaceWithValidation';
@@ -23,13 +24,14 @@ namespace nReplaceWithValidation {
         restrict: string = 'A';
         templateUrl: string = 'src/nReplaceWithValidation.html';
         controllerAs: string = controllerAs;
-        replace: boolean = true;
+        // replace: boolean = true;
         require: string = '^form';
 
         scope: INReplaceWithValidationScope = {
             name: '@',
             text: '@',
-            messages: '=?'
+            messages: '=?',
+            multiple: '@'
         };
 
         private linkFn(scope: any, element: any, attrs: any, formController: any) {
@@ -40,6 +42,7 @@ namespace nReplaceWithValidation {
     class ComponentDirectiveController {
         private messages: any;
         private input: any;
+        private multiple: boolean;
 
         static $inject: Array<string> = ['$scope', '$sce', 'nReplaceWithValidationConfig'];
         constructor(private $scope: any,

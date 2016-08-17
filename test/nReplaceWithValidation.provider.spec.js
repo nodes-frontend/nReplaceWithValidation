@@ -32,6 +32,9 @@ describe('nReplaceWithValidation.provider', () => {
 			minlength: 'Please enter a value for at least 6 characters long (default)',
 			maxlength: 'This field can be at most 15 characters long. (default)',
 			email: 'This field must be a valid email address. (default)',
+			min: 'The value is too low. (default)',
+			max: 'The value is too high. (default)',
+			pattern: 'The value does match the validation pattern. (default)',
 			fallback: 'This will be used if error message is not configured. (default)'
 		};
 
@@ -63,6 +66,9 @@ describe('nReplaceWithValidation.provider', () => {
 			minlength: 'Please enter a value for at least 6 characters long (default)',
 			maxlength: 'This field can be at most 15 characters long. (default)',
 			email: 'This field must be a valid email address. (default)',
+			min: 'The value is too low. (default)',
+			max: 'The value is too high. (default)',
+			pattern: 'The value does match the validation pattern. (default)',
 			fallback: 'This will be used if error message is not configured. (default)'
 		};
 
@@ -81,6 +87,9 @@ describe('nReplaceWithValidation.provider', () => {
 			minlength: 'Please enter a value for at least 6 characters long (default)',
 			maxlength: 'This field can be at most 15 characters long. (default)',
 			email: 'This field must be a valid email address. (default)',
+			min: 'The value is too low. (default)',
+			max: 'The value is too high. (default)',
+			pattern: 'The value does match the validation pattern. (default)',
 			fallback: 'This will be used if error message is not configured. (default)'
 		};
 
