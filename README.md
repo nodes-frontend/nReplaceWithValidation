@@ -1,4 +1,4 @@
-# nReplaceWithValidation
+# ⛔️ [DEPRECATED] nReplaceWithValidation
 
 [![Build Status](https://travis-ci.org/nodes-frontend/nReplaceWithValidation.svg?branch=master)](https://travis-ci.org/nodes-frontend/nReplaceWithValidation) [![Coverage Status](https://coveralls.io/repos/github/nodes-frontend/nReplaceWithValidation/badge.svg?branch=master)](https://coveralls.io/github/nodes-frontend/nReplaceWithValidation?branch=master)
 
